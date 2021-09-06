@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
 import useInput from '../hooks/useInput';
-import { loginAction } from '../reducers';
+import { loginAction } from '../reducers/user';
 
 const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -21,11 +21,11 @@ const LoginForm = () => {
   const [id, onChangeId] = useInput('');
   const [password, onChangePassword] = useInput('');
 
-  const style = useMemo(() => ({marginTop: 10}), []);
+  const style = useMemo(() => ({ marginTop: 10 }), []);
 
   const onSubmitForm = useCallback(() => {
     console.log(id, password);
-    dispatch(loginAction( { id, password } ));
+    dispatch(loginAction({ id, password }));
   }, [id, password]);
 
   return (
@@ -33,15 +33,15 @@ const LoginForm = () => {
       <div>
         <label htmlFor="user-id">아이디</label>
         <br />
-        <Input name="user-id"/>
+        <Input name="user-id" />
       </div>
       <div>
-      <label htmlFor="user-password">비밀번호</label>
+        <label htmlFor="user-password">비밀번호</label>
         <br />
-        <Input 
-          name="user-password" 
-          value={password} 
-          onChange={onChangePassword} 
+        <Input
+          name="user-password"
+          value={password}
+          onChange={onChangePassword}
           required
         />
       </div>
